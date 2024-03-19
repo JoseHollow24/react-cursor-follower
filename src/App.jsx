@@ -5,6 +5,7 @@ const FollowMouse = () => {
   const [enabled, setEnabled] = useState(false)
   const [position, setPosition] = useState({ x: 0, y: 0})
 
+  //ponter move
   useEffect(() => {
     const handleMove = (event) => {
       const { clientX, clientY} = event
@@ -23,7 +24,15 @@ const FollowMouse = () => {
     }
   },[enabled])
   
-
+  //changeBodyClassname
+  useEffect(() => {
+    document.body.classList.toggle('no-cursor', enabled)
+  
+    return () => {
+      document.body.classList.remove('no-cursor',)
+    }
+  }, [enabled])
+  
   return (
     <>
       <div style={{
